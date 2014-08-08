@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://developer.android.com/training/basics/actionbar/styling.html -->
+
+<resources>
+    <!-- the theme applied to the application or activity -->
+    <style name="CustomActionBarTheme">
+
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar">
+        <item name="android:background">@drawable/background</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@drawable/background</item>
+    </style>
+</resources>

@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.notify.SendNotification"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/txt_your_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_name" />
+    
+    <EditText 
+        android:id="@+id/txtfield_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/edit_name"
+        />
+    
+    <TextView
+        android:id="@+id/txt_dummy01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/blank_line" />
+    
+    <TextView
+        android:id="@+id/txt_your_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_message" 
+        />
+    
+    <EditText 
+        android:id="@+id/txtfield_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="@string/edit_message"
+        />
+
+    <TextView
+        android:id="@+id/txt_dummy02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/blank_line" 
+        />
+    
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_message"
+        android:onClick="sendMsg"
+        android:background="#211A52"
+        android:textColor="#ffffff" />
+    
+    
+
+</LinearLayout>

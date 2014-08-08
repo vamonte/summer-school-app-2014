@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Notify</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_edit">Edit message</string>
+    <string name="action_log">Log view</string>
+  
+    <string name="hello_world">Welcome to the notification section! Please choose what you want to do:</string>
+    <string name="your_name">Your name</string>
+    <string name="your_message">Your message</string>
+    
+    <string name="edit_name">Enter your name</string>
+    <string name="edit_message">Enter your message</string>
+    
+    <string name="send_message">Send message</string>
+    <string name="create_message">Create message</string>
+    <string name="display_message">Display messages</string>
+    <string name="view_log">View message log</string>
+    <string name="blank_line"></string>
+    <string name="title_activity_send_notification">SendNotification</string>
+    <string name="title_activity_display_notification">DisplayNotification</string>
+    
+
+</resources>

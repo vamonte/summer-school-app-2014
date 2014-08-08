@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.parsetest.SendNotification"
+    xmlns:notify="http://schemas.android.com/apk/res-auto" >
+
+    <!-- Edit Icon, should appear as action button 
+    <item android:id="@+id/action_edit"
+          android:icon="@drawable/ic_action_edit"
+          android:title="@string/action_edit"
+          notify:showAsAction="ifRoom" />
+          -->
+    
+    <!-- Log View Icon, should appear as action button -->
+    <item android:id="@+id/action_log"
+          android:icon="@drawable/ic_action_view_as_list"
+          android:title="@string/action_log"
+          notify:showAsAction="ifRoom" />
+
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        notify:showAsAction="never"/>
+
+</menu>
