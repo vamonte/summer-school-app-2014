@@ -118,8 +118,9 @@ public class SendNotification extends ActionBarActivity {
 //                openSettings();
 //                return true;
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+//                NavUtils.navigateUpFromSameTask(this);
+                openHome();
+            	return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -133,6 +134,11 @@ public class SendNotification extends ActionBarActivity {
     
     public void openLog(){
     	Intent i = new Intent(getApplicationContext(),DisplayNotification.class);
+        startActivity(i);
+    }
+    
+    public void openHome(){
+    	Intent i = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(i);
     }
 		
