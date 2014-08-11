@@ -9,26 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.notify.SendNotification"
     android:background="@drawable/background" >
-
-    <TextView
-        android:id="@+id/txt_your_name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/your_name" />
-    
-    <EditText 
-        android:id="@+id/txtfield_name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="@string/edit_name"
-        />
-    
-    <TextView
-        android:id="@+id/txt_dummy01"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/blank_line" />
     
     <TextView
         android:id="@+id/txt_your_message"

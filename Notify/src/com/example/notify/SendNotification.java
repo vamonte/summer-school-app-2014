@@ -3,9 +3,12 @@ package com.example.notify;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.http.Header;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -16,6 +19,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -25,45 +31,50 @@ public class SendNotification extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_send_notification);
-		
-		// set up Parse connection
-        Parse.initialize(this, "yMpYNZXO0j1CwyAdC8VCSNiCaDJ7D9gSFzaNVNnm", "OVzuZXDpu9kcNGzkDYIAMoRvURgQ0M4oY40Zbx1e");
-     		
+
      // Function for Send-Button (Create Message)
      	Button btn_send = (Button) findViewById(R.id.btn_send);
         btn_send.setOnClickListener (new View.OnClickListener() {
         	public void onClick(View v) {
         		
-        		// Check if there is an Internet connection available
-    			// if (getConnectivityStatus(Context context)) {
         		if(getConnectivityStatus(getApplicationContext())){
         		
         			// Create Strings from Text Input
-        			EditText et_name = (EditText) findViewById(R.id.txtfield_name);
         			EditText et_msg = (EditText) findViewById(R.id.txtfield_message);
-        			String name = et_name.getText().toString();
         			String message = et_msg.getText().toString();
-        			
-        			// get date & time
-        			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        			String date = sdf.format(new Date());
     			
         			// check if there has been content entered into the form before sending
-        			if (name.length()>0 && message.length()>0){
-
-    					// Create ParseObject
-    					ParseObject parse = new ParseObject("Notification");
-    					parse.put("name", name);
-    					parse.put("message", message);
-    					parse.put("date", date);
-    					parse.saveInBackground();
-    					Intent i = new Intent(getApplicationContext(),DisplayNotification.class);
-    					startActivity(i);
+        			if (message.length()>0){
+        				
+        				SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+    					String user = prefs.getString("user_connected_pk", "1");
+    					
+    					AsyncHttpClient client = new AsyncHttpClient();
+    					RequestParams params = new RequestParams();
+    					params.put("user", user);
+    					params.put("message", message);
+    					
+    					client.post("http://172.17.36.39:8080/notifications/add", params, new AsyncHttpResponseHandler() {
+							
+							@Override
+							public void onSuccess(int arg0, Header[] arg1, byte[] response) {
+								Toast.makeText(getApplicationContext(), new String(response), Toast.LENGTH_LONG);
+								Intent i = new Intent(getApplicationContext(),DisplayNotification.class);
+		    					startActivity(i);
+							}
+							
+							@Override
+							public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
+								Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_LONG);
+								
+							}
+						});
+    					
     					}
         			
         			// if there is no content for either name or message, message can't be sent
         			else{
-        				Toast toast = Toast.makeText(getApplicationContext(), "Enter your name & message", Toast.LENGTH_LONG);
+        				Toast toast = Toast.makeText(getApplicationContext(), "Enter your message", Toast.LENGTH_LONG);
         				toast.show();
     					}
         			}

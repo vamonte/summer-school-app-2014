@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +27,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -45,69 +53,44 @@ public class DisplayNotification extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_notification);
+		lv = (ListView) findViewById(R.id.lv_notifications);
 
-	// setup Parse
-    Parse.initialize(this, "yMpYNZXO0j1CwyAdC8VCSNiCaDJ7D9gSFzaNVNnm", "OVzuZXDpu9kcNGzkDYIAMoRvURgQ0M4oY40Zbx1e");
-	PushService.setDefaultPushCallback(this, DisplayNotification.class);
+		AsyncHttpClient client = new AsyncHttpClient();
+		RequestParams params = new RequestParams();
+		client.get("http://172.17.36.39:8080/notifications", params, new AsyncHttpResponseHandler(){
 	
-	//TODO check if internet connection is available?!?
-	// if(getConnectivityStatus(getApplicationContext()))
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
+					Throwable arg3) {
+				Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_LONG).show();	
+			}
 	
-	ParseQuery<ParseObject> query = ParseQuery.getQuery("Notification");
-	query.orderByDescending("createdAt");
-	query.setLimit(100); // limits the max number of notifications being displayed
-	query.findInBackground(new FindCallback<ParseObject>() {
-		@Override
-		public void done(List<ParseObject> notifyList, ParseException e) {
-			if (e == null) {
-	            Log.d("Notification List", "Retrieved " + notifyList.size() + " messages");
-	            
-	            // pass data into variables that the UiThread can access
-				nrOfMsgs = notifyList.size();
-	            notifications = notifyList;
-	            
-	            // call UI Thread to display the data
-	            runOnUiThread(new java.lang.Runnable() {
-					
-					@Override
-					public void run() {
-						
-						if (notifications != null){
-        				
-        				// create ListView, following tutorial on https://www.youtube.com/watch?v=tNoeFkXCZ6w
-        				// all content needs to be gathered into one string called "composition"
-        				lv = (ListView) findViewById(R.id.lv_notifications);
-        				als = new ArrayList<String>();
-        				
-        				for (ParseObject obj : notifications) {
-			                   String name = (String)obj.get("name");
-			                   String message = (String)obj.get("message");
-			                   String date = (String)obj.get("date");
-			                   String composition = (message + " // from " + name + " // sent on " + date).toString();
-			                   als.add(composition);
-        				}
-        				
-        				adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, als);
-        				lv.setAdapter(adapter);
-        				
+			@Override
+			public void onSuccess(int arg0, Header[] arg1, byte[] response) {
+				try {
+					JSONObject obj = new JSONObject(new String(response));
+					JSONArray notifications = obj.getJSONArray("notifications");
+					als = new ArrayList<String>();
+					for (int i = 0; i < notifications.length(); i++) {
+						  JSONObject notification = notifications.getJSONObject(i);
+						  JSONObject fields = notification.getJSONObject("fields");
+						  String text = fields.getString("text");
+						  String date = fields.getString("date");
+						  String user = fields.getString("user");
+						  String composition = (text + " // from " + user + " // sent on " + date).toString();
+						  als.add(composition);
 						}
-						
-        				// if notification = null --> no messages displayed
-						// TODO find a way to save messages in local storage
-						else {
-						Toast toast = Toast.makeText(getApplicationContext(), "There are no messages", Toast.LENGTH_LONG);
-        				toast.show();
-					} 
-					}
-				});
-	            
-	            
-	        } else {
-	            Log.d("messages", "Error: " + e.getMessage());
-	        }
-		}
-	});
+					adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, als);
+					lv.setAdapter(adapter);
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+					Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+				}
+			}
 			
+		});
 	// Create Message Button --> hidden because with the Action Bar Menu it's no longer needed
 //		Button btn_create = (Button) findViewById(R.id.btn_create);
 //		btn_create.setOnClickListener (new View.OnClickListener() {
