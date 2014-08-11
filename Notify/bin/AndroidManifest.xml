@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -28,24 +28,39 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.notify.MainActivity"
             android:label="@string/app_name" 
-            android:theme="@style/Theme.AppCompat.Light" >
+            android:theme="@style/Theme.AppCompat.Light"
+            android:launchMode="standard"
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
-            android:name=".SendNotification"
+            android:name="com.example.notify.SendNotification"
             android:label="@string/title_activity_send_notification"
-            android:theme="@style/Theme.AppCompat.Light"  >
+            android:theme="@style/Theme.AppCompat.Light"
+            android:parentActivityName="com.example.notify.MainActivity" >
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.notify.MainActivity" />
+            
         </activity>
+        
         <activity
-            android:name=".DisplayNotification"
+            android:name="com.example.notify.DisplayNotification"
             android:label="@string/title_activity_display_notification"
-            android:theme="@style/Theme.AppCompat.Light"  >
+            android:theme="@style/Theme.AppCompat.Light"
+            android:parentActivityName="com.example.notify.MainActivity" >
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.notify.MainActivity" />
+            
         </activity>
         
         <service android:name="com.parse.PushService" />
@@ -61,9 +76,6 @@
     			<action android:name="com.google.android.c2dm.intent.RECEIVE" />
     			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
  
-    <!--
-      IMPORTANT: Change "com.parse.starter" to match your app's package name.
-    -->
     			<category android:name="com.example.notify" />
   			</intent-filter>
 		</receiver>
