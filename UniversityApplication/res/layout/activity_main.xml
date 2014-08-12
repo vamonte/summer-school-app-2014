@@ -1,0 +1,91 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/firstbackground">
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+   		<TextView
+	        android:id="@+id/textViewUsername"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	         android:layout_marginTop="115dp"
+	        android:layout_marginLeft="52dp"
+	        android:text="Username" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+	   		<EditText
+		        android:id="@+id/editusername"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/editpassword"
+		        android:layout_alignParentTop="true"
+		        android:layout_marginLeft="53dp"
+		        android:ems="10" >
+	        	<requestFocus />
+	    	</EditText>
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+   		<TextView
+	        android:id="@+id/textViewPassword"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	         android:layout_marginTop="15dp"
+	        android:layout_marginLeft="52dp"
+	        android:text="Password" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+            <EditText
+		        android:id="@+id/editpassword"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/button1"
+		        android:layout_below="@+id/editusername" 
+		        android:layout_marginLeft="53dp"
+		        android:ems="10" />
+     </TableRow>
+      
+     <TableRow
+	     android:id="@+id/tableRow5"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content" >
+
+	         <Button
+		       android:id="@+id/button1"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_alignParentLeft="true"
+		       android:layout_below="@+id/editpassword"
+		       android:layout_marginLeft="50dp"
+		       android:layout_marginTop="30dp"
+		       android:text="Connect" />
+	</TableRow>
+	
+     <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="1.50"
+        android:src="@drawable/logo" />
+</TableLayout>

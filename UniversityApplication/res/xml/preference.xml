@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+  <PreferenceCategory android:title="Network">
+      <EditTextPreference
+	            android:key="server_address"
+	            android:title="server address"
+	            android:summary=""
+	            android:dialogTitle="Server address"
+	            android:dialogMessage=""   
+	            android:defaultValue="" />
+  </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,202 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbackground" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context="com.example.universityapplication.MainMenu" >
+
+            <ImageButton
+                android:id="@+id/imageButtonCalendar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/calendar" />
+
+            <ImageButton
+                android:id="@+id/imageButtonContacts"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/contacts" />
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            tools:context="com.example.universityapplication.MainMenu" >
+        
+	         <TextView
+                android:id="@+id/textViewCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="57dp"
+                android:text="Calendar" />
+	         
+	         <TextView
+                android:id="@+id/textViewContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="63dp"
+                android:text="Contacts" />
+         </LinearLayout>
+    </TableRow>    
+        
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            tools:context="com.example.universityapplication.MainMenu" >
+
+            <ImageButton
+                android:id="@+id/imageButtonMap"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/map" />
+
+            <ImageButton
+                android:id="@+id/imageButtonNews"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/news" />
+        </LinearLayout>
+    </TableRow>
+    
+     <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            tools:context="com.example.universityapplication.MainMenu" >
+        
+	         <TextView
+                android:id="@+id/textViewMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="71dp"
+                android:text="Map" />
+	         
+	         <TextView
+                android:id="@+id/textViewNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="88dp"
+                android:text="News" />
+         </LinearLayout>
+    </TableRow>    
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            tools:context="com.example.universityapplication.MainMenu" >
+
+            <ImageButton
+                android:id="@+id/imageButtonPmessages"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/pmessages" />
+
+            <ImageButton
+                android:id="@+id/imageButtonVotes"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/votes" />
+        </LinearLayout>
+    </TableRow>
+	
+	<TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            tools:context="com.example.universityapplication.MainMenu" >
+        
+	         <TextView
+                android:id="@+id/textViewPmessages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="52dp"
+                android:text="Messages" />
+	         
+	         <TextView
+                android:id="@+id/textViewVotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="In-class vote" />
+         </LinearLayout>
+    </TableRow>    
+    
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1.50"
+        android:src="@drawable/logo" />
+</TableLayout>

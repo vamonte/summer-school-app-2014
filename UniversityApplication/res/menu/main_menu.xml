@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/disconect"
+        android:title="disconect">
+    </item>
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings">
+    </item>
+</menu> 

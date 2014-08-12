@@ -1,0 +1,58 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            tools:context="com.example.universityapplication.MainMenu" >
+
+            <ImageButton
+                android:id="@+id/imageButtonHome"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/home" />
+             
+             <ImageButton
+                android:id="@+id/imageButtonAal"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="7dp"
+                android:background="@drawable/aal" />
+            
+              <ImageButton
+                android:id="@+id/imageButtonAau"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="7dp"
+                android:background="@drawable/aau" />
+             
+            <ImageButton
+                android:id="@+id/imageButtonWeather"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="7dp"
+                android:background="@drawable/weather" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <WebView
+        android:id="@+id/webViewNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="0.17" />
+
+</TableLayout>
