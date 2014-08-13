@@ -1,6 +1,7 @@
 package com.example.universityapplication;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,7 +40,7 @@ import android.widget.Toast;
         final EditText edit_password = (EditText)findViewById(R.id.editpassword);
         
         // Declare the preferences used to manage user (re)connection
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE); 
+        SharedPreferences prefs = getSharedPreferences("user_pref",MODE_PRIVATE); 
         String pk = prefs.getString("user_connected_pk", null);
         String username = prefs.getString("user_connecte_name", null);
         
@@ -47,7 +48,7 @@ import android.widget.Toast;
         if(pk != null)
         {
         	// Then go to the main menu of the application
-        	goToMainMenu();
+        	//goToMainMenu();
         }
         else
         {
@@ -141,20 +142,24 @@ import android.widget.Toast;
     protected void saveConnectedUser(JSONObject obj){
     	try 
     	{
-			JSONObject body = obj.getJSONObject("body");
-			String pk = body.getString("pk");
-			
-			JSONObject fields = obj.getJSONObject("fields");
-			String user_name = fields.getString("user_name");
-			
-			 SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+			JSONArray body = obj.getJSONArray("body");
+			JSONObject user = (JSONObject) body.get(0);
+			String pk = user.getString("pk");
+
+			JSONObject fields = user.getJSONObject("fields");
+			String first_name = fields.getString("first_name");
+			String last_name = fields.getString("last_name");
+			String user_name = new StringBuilder().append(first_name).append(".").append(last_name).toString();
+			 SharedPreferences.Editor editor = getSharedPreferences("user_pref",MODE_PRIVATE).edit();
 			 editor.putString("user_connected_pk", pk);
 			 editor.putString("user_connecte_name", user_name);
-			 editor.apply();
+			 editor.commit();
+			 
 		}
     	
     	catch (JSONException e) 
     	{
+    		Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
     }
@@ -196,7 +201,7 @@ import android.widget.Toast;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
       MenuInflater inflater = getMenuInflater();
-      inflater.inflate(R.menu.main_menu, menu);
+      inflater.inflate(R.menu.login_menu, menu);
       return true;
     } 
     
@@ -210,14 +215,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
         Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(i);
         return true;
-    
-    case R.id.disconect:
-    	 SharedPreferences prefs = getPreferences(MODE_PRIVATE); 
-    	 SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-		 editor.putString("user_connected_pk", null);
-		 
-		 Intent main = new Intent(getApplicationContext(), Login.class);
-		 startActivity(main);
+   
     }
     return super.onOptionsItemSelected(item);
 }

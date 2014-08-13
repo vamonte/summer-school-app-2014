@@ -16,5 +16,17 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+	<style name="StyleTextTitle" parent="@android:style/TextAppearance">
+		<item name="android:textColor">@color/textColor</item>
+		<item name="android:textSize">@dimen/textSize</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:typeface">normal</item>
+	</style>
+	
+     <style name="StyleText" parent="@android:style/TextAppearance">
+		<item name="android:textColor">@color/textColor</item>
+		<item name="android:textSize">@dimen/textSize</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:typeface">normal</item>
+	</style>
 </resources>

@@ -1,15 +1,16 @@
 package com.example.universityapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 // Second Activity = MAIN MENU
 public class MainMenu extends ActionBarActivity 
@@ -47,27 +48,64 @@ public class MainMenu extends ActionBarActivity
 			}
         	
         });
+  
+        ImageButton btnVotes = (ImageButton)findViewById(R.id.imageButtonVotes);
+        
+        btnVotes.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(),Votes.class);
+				startActivity(i);
+			}
+        	
+        });
+        ImageButton btnContact = (ImageButton)findViewById(R.id.imageButtonContacts);
+        
+        btnContact.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(),ContactList.class);
+				startActivity(i);
+			}
+        	
+        });
+        
+        ImageButton btnCalendar = (ImageButton)findViewById(R.id.imageButtonCalendar);
+        
+        btnCalendar.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(),Month_view.class);
+				startActivity(i);
+			}
+        	
+        });
     }
     
     
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+      MenuInflater inflater = getMenuInflater();
+      inflater.inflate(R.menu.main_menu, menu);
+      return true;
+    } 
+    
 
-        switch(item.getItemId())
-        {
-        case R.id.action_settings:
-            Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-            startActivity(i);
-            return true;
-        
-        case R.id.disconect:
-        	 SharedPreferences prefs = getPreferences(MODE_PRIVATE); 
-        	 SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-    		 editor.putString("user_connected_pk", null);
-    		 
-    		 Intent main = new Intent(getApplicationContext(), Login.class);
-    		 startActivity(main);
-        }
-        return super.onOptionsItemSelected(item);
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+
+    switch(item.getItemId())
+    {
+    case R.id.disconect:
+    	SharedPreferences.Editor editor = getSharedPreferences("user_pref",MODE_PRIVATE).edit();
+		 editor.putString("user_connected_pk", null);
+		 editor.commit();
+		 Intent main = new Intent(getApplicationContext(), Login.class);
+		 startActivity(main);
     }
+    return super.onOptionsItemSelected(item);
+}
 }

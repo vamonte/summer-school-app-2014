@@ -52,9 +52,54 @@
             android:label="@string/title_activity_display_notification">
         </activity>
         <activity
+            android:name=".Votes"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name=".SettingsActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".ContactList"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Details"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_details" >
+        </activity>
+        <activity
+            android:name=".Month_view"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_month_view" >
+        </activity>
+        <activity
+            android:name=".DayOrganisation"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_day_organisation" >
+        </activity>
+        <activity
+            android:name=".DetailsCalendar"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".EventAdapter"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_event_adapter" >
+        </activity>
+        <activity
+            android:name=".DayView"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_day_view" >
+        </activity>
+        <activity
+            android:name=".Day_view"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_day_view" >
         </activity>
     </application>
 

@@ -46,7 +46,8 @@
 	        android:layout_height="wrap_content"
 	         android:layout_marginTop="15dp"
 	        android:layout_marginLeft="52dp"
-	        android:text="Password" />
+	        android:text="Password" 
+	        />
     </TableRow>
     
     <TableRow
@@ -61,7 +62,8 @@
 		        android:layout_alignLeft="@+id/button1"
 		        android:layout_below="@+id/editusername" 
 		        android:layout_marginLeft="53dp"
-		        android:ems="10" />
+		        android:ems="10"
+		         android:inputType="textPassword" />
      </TableRow>
       
      <TableRow

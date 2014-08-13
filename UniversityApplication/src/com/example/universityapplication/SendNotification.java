@@ -48,8 +48,8 @@ public class SendNotification extends ActionBarActivity {
         			if (message.length()>0){
         				
         				// get username that has been entered at login
-        				SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-    					String user = prefs.getString("user_connected_pk", "1");
+        				SharedPreferences prefs = getSharedPreferences("user_pref",MODE_PRIVATE); 
+    					String user = prefs.getString("user_connected_pk", null);
     					
     					// connect to the server
     					AsyncHttpClient client = new AsyncHttpClient();

@@ -25,5 +25,12 @@
     <string name="blank_line"></string>
     <string name="title_activity_send_notification">SendNotification</string>
     <string name="title_activity_display_notification">DisplayNotification</string>
-
+    <string name="title_activity_details">Details</string>
+    <string name="TextStaff">Staff</string>
+    <string name="TextStudent">Student</string>
+	 <string name="InitText"></string>
+    <string name="title_activity_day_organisation">DayOrganisation</string>
+    <string name="title_activity_month_view">Month_view</string>
+    <string name="title_activity_event_adapter">EventAdapter</string>
+    <string name="title_activity_day_view">DayView</string>
 </resources>
