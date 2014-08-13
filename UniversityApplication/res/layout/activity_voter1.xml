@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bgwaves"
+    android:orientation="vertical" >
+     
+  
+    <RadioGroup
+        android:id="@+id/rdbGp1"
+        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_below="@+id/logo"
+        android:layout_alignParentRight="true" 
+          android:layout_alignParentBottom="true"
+           android:layout_marginRight="10dp"
+          >
+
+        <RadioButton
+            android:id="@+id/rdb1"
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:checked="true"
+            android:drawableLeft="@drawable/buttona2" 
+            android:text="A"/>
+
+        <RadioButton
+            android:id="@+id/rdb2"
+            android:layout_width="fill_parent"
+           android:layout_height="75dp"
+                android:drawableLeft="@drawable/buttonb2" 
+                 android:text="B"
+          />
+        
+        <RadioButton
+            android:id="@+id/rdb3"
+            android:layout_width="fill_parent"
+        android:layout_height="75dp"
+                 android:drawableLeft="@drawable/buttonc2" 
+                  android:text="C"
+           />
+
+        <RadioButton
+            android:id="@+id/rdb4"
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:drawableLeft="@drawable/buttond2"
+             android:text="D" />
+        
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="130dp"
+        android:layout_height="127dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/rdbGp1"
+        android:layout_marginTop="18dp"
+         android:layout_marginRight="10dp"
+        android:src="@drawable/logop" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="34dp"
+        android:layout_toLeftOf="@+id/logo"
+        android:minHeight="90dp"
+        android:minWidth="90dp"
+        android:text="Send" />
+      
+</RelativeLayout>
