@@ -76,7 +76,7 @@ public class SendNotification extends ActionBarActivity {
 							// if not successful, stay on current page, display error message
 							@Override
 							public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-								Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_LONG);
+								Toast.makeText(getApplicationContext(), "Network error while connecting to server", Toast.LENGTH_LONG);
 								
 							}
 						});

@@ -31,7 +31,9 @@ public class DisplayNotification extends ActionBarActivity {
 	// some variables for the dynamic ListView
 	private ListView lv;
 	private ArrayList<String> als;
+	private ArrayList<String> localstorage;
 	private ArrayAdapter<String> adapter;
+	private static final String KEY = "myNotifications";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,11 @@ public class DisplayNotification extends ActionBarActivity {
 		
 		// Activate Up Button in Action Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        // if there is a internet connection available
+        // connect to the server
+        // AsyncHttpResonseHandler opens another thread
+     	if (getConnectivityStatus(getApplicationContext())){
 
 		// connect to the server, opens another thread
 		AsyncHttpClient client = new AsyncHttpClient();
@@ -56,7 +63,7 @@ public class DisplayNotification extends ActionBarActivity {
 			@Override
 			public void onFailure(int arg0, Header[] arg1, byte[] arg2,
 					Throwable arg3) {
-				Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_LONG).show();	
+				Toast.makeText(getApplicationContext(), "Network error while connecting to server", Toast.LENGTH_LONG).show();	
 			}
 	
 			// if connection is successful
@@ -91,6 +98,24 @@ public class DisplayNotification extends ActionBarActivity {
 			}
 			
 		});
+     	}
+     	// if there is no internet connection available
+     	else {
+     				if (savedInstanceState != null && savedInstanceState.containsKey(KEY)){
+     					// get data from local storage
+     					localstorage = savedInstanceState.getStringArrayList(KEY);
+     					adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, localstorage);
+     					lv.setAdapter(adapter);
+     				}
+     				else {
+     					Toast toast = Toast.makeText(getApplicationContext(), 
+     							"Connect your device to the internet \nin order to display messages", 
+     							Toast.LENGTH_LONG);
+     					toast.show();
+     				}
+     	}
+     	
+     	
 	// Create Message Button --> hidden because with the Action Bar Menu it's no longer needed
 //		Button btn_create = (Button) findViewById(R.id.btn_create);
 //		btn_create.setOnClickListener (new View.OnClickListener() {
@@ -158,4 +183,13 @@ public class DisplayNotification extends ActionBarActivity {
 	    }
 	    return false;
 	}
+    
+    // save notifications into local storage
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        // save the ListArray called als into local storage
+        outState.putStringArrayList(KEY, als);
+    }
 }
